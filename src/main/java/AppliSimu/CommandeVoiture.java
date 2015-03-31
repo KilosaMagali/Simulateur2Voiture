@@ -14,6 +14,8 @@ public class CommandeVoiture extends JPanel implements ActionListener{
 	
 	private JButton boutonAccelerer;
 	private JButton boutonInverserDirection;
+    public Route routeHorizontale = new Route(0,285,1050,50);
+    public  Route routeVerticale= new Route(210,73,50,1000);
 	private Voiture maVoiture;
 	
 	

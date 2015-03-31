@@ -56,6 +56,8 @@ public class IHMVoiture extends JFrame implements Observer{
 	@Override
 	public void paint(Graphics contexteGraphique) {
 		super.paint(contexteGraphique);
+        maCommandeVoiture.routeHorizontale.paint(contexteGraphique);
+        maCommandeVoiture.routeVerticale.paint(contexteGraphique);
 		contexteGraphique.setColor(Color.red);
 		dessinerVoiture(contexteGraphique);
 	}
@@ -64,7 +66,7 @@ public class IHMVoiture extends JFrame implements Observer{
 	private void dessinerVoiture(Graphics contexteGraphique) {
 		int xMetres = maVoiture.getX();
 		int xPixel = calculerPositionPixels(xMetres);
-		contexteGraphique.fillRect(xPixel, 300, 30, 15);
+		contexteGraphique.fillRect(maVoiture.getX(), 300, 30, 15);
 	}
 	
 }
