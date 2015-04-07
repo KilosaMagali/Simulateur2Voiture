@@ -77,5 +77,10 @@ public class TestVoiture {
 		assertEquals(0, maVoiture.getX());
 		
 	}
+
+    @Test
+    public void testGetY() throws Exception {
+        assertEquals(0, maVoiture.getY());
+    }
 	
 }

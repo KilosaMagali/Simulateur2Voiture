@@ -3,6 +3,8 @@ package AppliSimu;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,7 +12,7 @@ import javax.swing.JPanel;
 
 import DomaineVoiture.Voiture;
 
-public class CommandeVoiture extends JPanel implements ActionListener{
+public class CommandeVoiture extends JPanel implements ActionListener, KeyListener{
 	
 	private JButton boutonAccelerer;
 	private JButton boutonInverserDirection;
@@ -41,7 +43,8 @@ public class CommandeVoiture extends JPanel implements ActionListener{
         boutonTurnRight = new JButton("Droite");
         boutonTurnRight.addActionListener(this);
         this.add(boutonTurnRight);
-		
+		fenetre.setFocusable(true);
+        fenetre.addKeyListener(this);
 		fenetre.add(this);
 		this.maVoiture = maVoiture;
 	}
@@ -49,7 +52,7 @@ public class CommandeVoiture extends JPanel implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent event) {
-        Object bouton = event.getSource();
+        JButton bouton = (JButton)event.getSource();
         if (bouton == boutonAccelerer)
             maVoiture.accelerer();
         else if(bouton == boutonInverserDirection) {
@@ -79,8 +82,24 @@ public class CommandeVoiture extends JPanel implements ActionListener{
                 }
             }
         }
+        bouton.setFocusable(false);
+    }
+
+
+    @Override
+    public void keyTyped(KeyEvent keyEvent) {
 
     }
-	
 
+    @Override
+    public void keyPressed(KeyEvent keyEvent) {
+        if (keyEvent.getKeyCode() == keyEvent.VK_SPACE) {
+            maVoiture.setVitesse(0);
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent keyEvent) {
+
+    }
 }
