@@ -63,10 +63,15 @@ public class IHMVoiture extends JFrame implements Observer{
 	}
 
 
-	private void dessinerVoiture(Graphics contexteGraphique) {
-		int xMetres = maVoiture.getX();
-		int xPixel = calculerPositionPixels(xMetres);
-		contexteGraphique.fillRect(maVoiture.getX(), 300, 30, 15);
-	}
+    private void dessinerVoiture(Graphics contexteGraphique) {
+        int xMetres = maVoiture.getX();
+        int yMetres = maVoiture.getY();
+        int xPixel = calculerPositionPixels(xMetres);
+        int yPixel = calculerPositionPixels(yMetres);
+        System.out.println("Je suis à: " +xMetres+" , "+ yMetres + "  Ma direction: "+ maVoiture.getDirection());
+        if((Integer)maVoiture.getDirection() == 0 || (Integer)maVoiture.getDirection() == 180)
+            contexteGraphique.fillRect(maVoiture.getX(), maVoiture.getY(), 30, 15);
+        else  contexteGraphique.fillRect(maVoiture.getX(), maVoiture.getY(), 15, 30);
+    }
 	
 }
